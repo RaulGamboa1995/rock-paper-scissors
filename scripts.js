@@ -1,3 +1,11 @@
+let wins = 0
+let ties = 0
+let loses = 0
+
+function keepScore() {
+    console.log(wins + " wins, " + ties + " ties and " + loses + " loses.")
+}
+
 function getComputerChoice() {
     let firstInt = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
     if (firstInt === 1) {
@@ -9,31 +17,51 @@ function getComputerChoice() {
     }
 }
 
-
 function playRound() {
-    getComputerChoice()
     let computerSelection = getComputerChoice()
-    console.log("Computer has chosen " + computerSelection + "! now pick urs lmao")
+    console.log("make your choice, human")
     let askPlayer = prompt('your options are rock, paper or scissors.')
     let playerSelection = askPlayer.toLowerCase();
+    console.log("You picked " + playerSelection + " and computer picked " + computerSelection)
     if (playerSelection === 'rock' && computerSelection === 'rock') {
-        return 'tie';
+        ties++;
+        console.log('tie');
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        return 'computer wins';
+        loses++;
+        console.log('computer wins');
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        return 'player wins';
+        wins++;
+        console.log('player wins');
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        return 'player wins';
+        wins++;
+        console.log('player wins');
     } else if (playerSelection === 'paper' && computerSelection === 'paper') {
-        return 'tie';
+        ties++;
+        console.log('tie');
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        return 'computer wins';
+        loses++;
+        console.log('computer wins');
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        return 'computer wins';
+        loses++;
+        console.log('computer wins');
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        return 'player wins';
+        wins++;
+        console.log('player wins');
     } else if (playerSelection === 'scissors' && computerSelection === 'scissors') {
-        return 'tie';
+        ties++;
+        console.log('tie');
     }
 }
 
+function game() {
+    playRound()
+    keepScore()
+    playRound()
+    keepScore()
+    playRound()
+    keepScore()
+    playRound()
+    keepScore()
+    playRound()
+    keepScore()
+}
